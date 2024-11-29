@@ -1,0 +1,259 @@
+absl-py==2.1.0
+accelerate==0.31.0
+action-msgs==1.2.1
+action-tutorials-interfaces==0.20.5
+action-tutorials-py==0.20.5
+actionlib-msgs==4.2.4
+aiohttp==3.9.5
+aiosignal==1.3.1
+ament-cmake-test==1.3.10
+ament-copyright==0.12.11
+ament-cppcheck==0.12.11
+ament-cpplint==0.12.11
+ament-flake8==0.12.11
+ament-index-python==1.4.0
+ament-lint==0.12.11
+ament-lint-cmake==0.12.11
+ament-package==0.14.0
+ament-pep257==0.12.11
+ament-uncrustify==0.12.11
+ament-xmllint==0.12.11
+angles==1.15.0
+antlr4-python3-runtime==4.9.3
+anyio==4.4.0
+async-timeout==4.0.3
+attrs==23.2.0
+bchlib==0.10
+Brotli @ file:///home/conda/feedstock_root/build_artifacts/brotli-split_1648883617327/work
+builtin-interfaces==1.2.1
+catkin-pkg==1.0.0
+certifi @ file:///croot/certifi_1725551672989/work/certifi
+cffi @ file:///home/conda/feedstock_root/build_artifacts/cffi_1696001684923/work
+charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1698833585322/work
+click==8.1.7
+colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1666700638685/work
+composition-interfaces==1.2.1
+contourpy==1.2.1
+cv-bridge==3.2.1
+cycler==0.12.1
+datasets==2.19.2
+demo-nodes-py==0.20.5
+diagnostic-msgs==4.2.4
+diffusers==0.21.2
+dill==0.3.8
+docker-pycreds==0.4.0
+docutils==0.21.2
+domain-coordinator==0.10.0
+easydict==1.13
+einops==0.8.0
+empy==3.3.4
+example-interfaces==0.9.3
+examples-rclpy-executors==0.15.2
+examples-rclpy-minimal-action-client==0.15.2
+examples-rclpy-minimal-action-server==0.15.2
+examples-rclpy-minimal-client==0.15.2
+examples-rclpy-minimal-publisher==0.15.2
+examples-rclpy-minimal-service==0.15.2
+examples-rclpy-minimal-subscriber==0.15.2
+exceptiongroup==1.2.2
+filelock @ file:///home/conda/feedstock_root/build_artifacts/filelock_1718250083293/work
+fonttools==4.53.0
+frozenlist==1.4.1
+fsspec==2024.3.1
+ftfy==6.2.0
+future==1.0.0
+geometry-msgs==4.2.4
+gitdb==4.0.11
+GitPython==3.1.43
+gmpy2 @ file:///tmp/build/80754af9/gmpy2_1645455533097/work
+grpcio==1.64.1
+h11==0.14.0
+httpcore==1.0.5
+httpx==0.27.0
+huggingface-hub==0.23.4
+idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1713279365350/work
+image-geometry==3.2.1
+imageio==2.35.1
+-e git+https://github.com/hendrycks/robustness.git@8190fe329f5f072a06e3a2aea02bb5dda69aed9f#egg=imagenet_c&subdirectory=ImageNet-C/imagenet_c
+importlib_metadata @ file:///home/conda/feedstock_root/build_artifacts/importlib-metadata_1710971335535/work
+interactive-markers==2.3.2
+Jinja2 @ file:///croot/jinja2_1716993405101/work
+joblib==1.4.2
+kiwisolver==1.4.5
+kornia==0.7.3
+kornia_rs==0.1.5
+lark-parser==0.12.0
+laser-geometry==2.4.0
+launch==1.0.6
+launch-ros==0.19.7
+launch-testing==1.0.6
+launch-testing-ros==0.19.7
+launch-xml==1.0.6
+launch-yaml==1.0.6
+lazy_loader==0.4
+lifecycle-msgs==1.2.1
+lightning-utilities==0.11.7
+lmdb==1.5.1
+logging-demo==0.20.5
+loguru==0.7.2
+lpips==0.1.4
+map-msgs==2.1.0
+Markdown==3.6
+MarkupSafe @ file:///croot/markupsafe_1704205993651/work
+matplotlib==3.9.0
+message-filters==4.3.5
+mpmath @ file:///croot/mpmath_1690848262763/work
+multidict==6.0.5
+multiprocess==0.70.16
+natsort==8.4.0
+nav-msgs==4.2.4
+networkx @ file:///croot/networkx_1717597493534/work
+numpy==1.26.4
+omegaconf==2.3.0
+opencv-python==3.4.18.65
+osrf-pycommon==2.0.2
+packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1718189413536/work
+pandas==2.2.2
+patsy==1.0.1
+pcl-msgs==1.0.0
+pendulum-msgs==0.20.5
+pillow @ file:///croot/pillow_1714398848491/work
+platformdirs==4.2.2
+protobuf==4.25.3
+psutil==5.9.8
+pyarrow==16.1.0
+pyarrow-hotfix==0.6
+pycocotools==2.0.8
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1711811537435/work
+pyDeprecate==0.3.1
+pyparsing==3.1.2
+PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1661604839144/work
+python-dateutil==2.9.0.post0
+python-qt-binding==1.1.2
+pytorch-lightning==1.5.0
+pytz==2024.1
+PyWavelets==1.6.0
+PyYAML @ file:///home/conda/feedstock_root/build_artifacts/pyyaml_1695373428874/work
+qt-dotgraph==2.2.3
+qt-gui==2.2.3
+qt-gui-cpp==2.2.3
+qt-gui-py-common==2.2.3
+quality-of-service-demo-py==0.20.5
+rcl-interfaces==1.2.1
+rclpy==3.3.14
+rcutils==5.1.6
+redis==5.0.7
+reedsolo==1.7.0
+regex @ file:///home/conda/feedstock_root/build_artifacts/regex_1715828395057/work
+requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1717057054362/work
+resource-retriever==3.1.2
+rmw-dds-common==1.6.0
+ros2action==0.18.11
+ros2bag==0.15.12
+ros2cli==0.18.11
+ros2component==0.18.11
+ros2doctor==0.18.11
+ros2interface==0.18.11
+ros2launch==0.19.7
+ros2lifecycle==0.18.11
+ros2multicast==0.18.11
+ros2node==0.18.11
+ros2param==0.18.11
+ros2pkg==0.18.11
+ros2run==0.18.11
+ros2service==0.18.11
+ros2topic==0.18.11
+rosbag2-interfaces==0.15.12
+rosbag2-py==0.15.12
+rosgraph-msgs==1.2.1
+rosidl-adapter==3.1.5
+rosidl-cli==3.1.5
+rosidl-cmake==3.1.5
+rosidl-generator-c==3.1.5
+rosidl-generator-cpp==3.1.5
+rosidl-generator-py==0.14.4
+rosidl-parser==3.1.5
+rosidl-runtime-py==0.9.3
+rosidl-typesupport-c==2.0.1
+rosidl-typesupport-cpp==2.0.1
+rosidl-typesupport-fastrtps-c==2.2.2
+rosidl-typesupport-fastrtps-cpp==2.2.2
+rosidl-typesupport-introspection-c==3.1.5
+rosidl-typesupport-introspection-cpp==3.1.5
+rpyutils==0.2.1
+rqt-action==2.0.1
+rqt-bag==1.1.5
+rqt-bag-plugins==1.1.5
+rqt-console==2.0.3
+rqt-graph==1.3.1
+rqt-gui==1.1.7
+rqt-gui-py==1.1.7
+rqt-msg==1.2.0
+rqt-plot==1.1.2
+rqt-publisher==1.5.0
+rqt-py-common==1.1.7
+rqt-py-console==1.0.2
+rqt-reconfigure==1.1.2
+rqt-service-caller==1.0.5
+rqt-shell==1.0.2
+rqt-srv==1.0.3
+rqt-topic==1.5.0
+safetensors @ file:///home/conda/feedstock_root/build_artifacts/safetensors_1713253444440/work
+scikit-image==0.18.3
+scikit-learn==1.5.0
+scipy==1.13.1
+sensor-msgs==4.2.4
+sensor-msgs-py==4.2.4
+sentry-sdk==2.7.0
+setproctitle==1.3.3
+shape-msgs==4.2.4
+six==1.16.0
+slack_sdk==3.32.0
+smmap==5.0.1
+sniffio==1.3.1
+sros2==0.10.5
+statistics-msgs==1.2.1
+statsmodels==0.14.4
+std-msgs==4.2.4
+std-srvs==4.2.4
+steganogan==0.1.2
+stereo-msgs==4.2.4
+sympy @ file:///croot/sympy_1701397643339/work
+-e git+https://github.com/CompVis/taming-transformers.git@3ba01b241669f5ade541ce990f7650a3b8f65318#egg=taming_transformers
+teleop-twist-keyboard==2.4.0
+tensorboard==2.17.0
+tensorboard-data-server==0.7.2
+tensorboardX==2.6.2.2
+test_tube==0.7.5
+tf2-geometry-msgs==0.25.7
+tf2-kdl==0.25.7
+tf2-msgs==0.25.7
+tf2-py==0.25.7
+tf2-ros-py==0.25.7
+tf2-tools==0.25.7
+threadpoolctl==3.5.0
+tifffile==2024.8.30
+tokenizers==0.19.1
+topic-monitor==0.20.5
+torch==2.3.1
+torchaudio==2.3.1
+torchgeometry==0.1.2
+torchmetrics==1.4.2
+torchvision==0.18.1
+tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1714854870413/work
+trajectory-msgs==4.2.4
+transformers==4.41.2
+triton==2.3.1
+turtlesim==1.4.2
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1717802530399/work
+tzdata==2024.1
+unique-identifier-msgs==2.2.1
+urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1708239446578/work
+visualization-msgs==4.2.4
+Wand==0.6.13
+wandb==0.17.3
+wcwidth==0.2.13
+Werkzeug==3.0.3
+xxhash==3.4.1
+yarl==1.9.4
+zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1718013267051/work
