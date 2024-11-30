@@ -64,9 +64,15 @@ We provide a demo to test, you can use it by:
 3. **Decoding**
 
 To extract hidden data from an image:
+ 
+ ```bash
+   python decode_image.py <model_path> --images_dir <stego_dir>
+   ```
+
+We also provide a demo to extract secret message from the encoding demo.
 
    ```bash
-   python decode_image.py --input <encoded_image>
+   python decode_image.py ./saved_models/masktrain/de_name.pth --images_dir <stego_dir>
    ```
 
 ## **Project Structure**
