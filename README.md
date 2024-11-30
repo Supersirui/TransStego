@@ -44,6 +44,7 @@ TransStego is a project for performing image steganography using advanced techni
 
    ```bash
    git lfs pull
+
 ## **Usage**
 1. **Training**
 To train the model:
