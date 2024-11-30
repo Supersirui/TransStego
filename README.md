@@ -40,6 +40,7 @@ TransStego is a project for performing image steganography using advanced techni
 
 ## **Usage**
 1. **Training**
+
 To train the model:
 
    ```bash
@@ -48,6 +49,7 @@ To train the model:
 You can change the setting of the training process in "./cfg/setting."
 
 2. **Encoding**
+
 To hide data in an image:
 
    ```bash
@@ -60,12 +62,15 @@ We provide a demo to test, you can use it by:
    ```
 
 3. **Decoding**
+
 To extract hidden data from an image:
 
    ```bash
    python decode_image.py --input <encoded_image>
    ```
+
 ## **Project Structure**
+
 1. **plaintext**
 ```
 TransStego/
@@ -86,6 +91,7 @@ TransStego/
 ├── LICENSE            # License file
 └── README.md          # Project documentation
 ```
+
 ## **Performance Metrics**
 
 1. - **PSNR (Peak Signal-to-Noise Ratio)**: Achieves high PSNR for encoded images.
