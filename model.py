@@ -149,67 +149,84 @@ class Discriminator(nn.Module):
         return output, x
 
 
-def generate_random_polygon(image_shape, num_vertices_range=(3, 10), size_range=(0.01, 0.05), random_seed=None):
+def generate_random_polygon(image_shape, num_vertices_range=(5, 12), target_area_ratio=0.1, random_seed=None):
     """
-Generate the vertex coordinates of a random polygon.
-
-Parameters:
-    image_shape (tuple): The shape of the image (height, width).
-    num_vertices_range (tuple): The range of the number of vertices for the polygon (minimum number of vertices, maximum number of vertices).
-    size_range (tuple): The size range of the polygon, as a proportion of the image height and width.
-    random_seed (int): Random seed for reproducibility.
-
-Returns:
-    np.ndarray: The vertex coordinates of the polygon, with shape (number of vertices, 2).
-"""
-    np.random.seed(random_seed)
-    height, width = image_shape
-    min_vertices, max_vertices = num_vertices_range
-    min_size, max_size = size_range
-
-    
-    num_vertices = np.random.randint(min_vertices, max_vertices + 1)
-
-    
-    size_ratio = np.random.uniform(min_size, max_size)
-    polygon_height = int(height * size_ratio)
-    polygon_width = int(width * size_ratio)
-
-    
-    vertices_x = np.random.randint(0, width - polygon_width, size=num_vertices)
-    vertices_y = np.random.randint(0, height - polygon_height, size=num_vertices)
-
-    
-    return np.stack((vertices_x, vertices_y), axis=1)
-
-def random_irregular_mask(encoded_image, image_shape, mask_value=0, random_seed=None, use_cuda=True):
-    """
-    Apply a random irregular-shaped mask to the input image.
+    Generate the vertex coordinates of a random irregular polygon, ensuring its area approximately occupies a specified ratio of the image area.
 
     Parameters:
-        encoded_image (torch.Tensor): The encoded image tensor with shape [batch_size, channels, height, width].
-        image_shape (tuple): The shape of the image (height, width).
-        mask_value (int): The value of the masked pixels.
+        image_shape (tuple): Shape of the image (height, width).
+        num_vertices_range (tuple): Range for the number of vertices (minimum, maximum).
+        target_area_ratio (float): Ratio of the polygon area to the image area.
         random_seed (int): Random seed for reproducibility.
-        use_cuda (bool): Whether to use CUDA for tensor operations.
 
     Returns:
-        torch.Tensor: The masked image tensor.
+        np.ndarray: Vertex coordinates of the polygon with shape (number of vertices, 2).
+    """
+    np.random.seed(random_seed)
+    height, width = image_shape
+    total_area = height * width
+    target_area = total_area * target_area_ratio  # Target covered area
+
+
+    min_vertices, max_vertices = num_vertices_range
+    num_vertices = np.random.randint(min_vertices, max_vertices + 1)
+
+    # Randomly generate the center point
+    center_x = np.random.randint(0, width)
+    center_y = np.random.randint(0, height)
+
+
+    max_radius = np.sqrt(target_area / np.pi)
+    radius_variation = 0.3
+    radii = np.random.uniform(0.7 * max_radius, max_radius, num_vertices)
+
+
+    angles = np.sort(np.random.uniform(0, 2 * np.pi, num_vertices))
+
+    # Calculate vertex coordinates based on angles and radii
+    vertices_x = (center_x + radii * np.cos(angles)).clip(0, width - 1).astype(int)
+    vertices_y = (center_y + radii * np.sin(angles)).clip(0, height - 1).astype(int)
+
+    return np.stack((vertices_x, vertices_y), axis=1)
+
+def random_irregular_mask(encoded_image, image_shape, mask_value=0, random_seed=None, use_cuda=True, target_area_ratio=0.1):
+    """
+    Apply a random irregular-shaped mask to the input image, covering an area of the specified ratio.
+
+    Parameters:
+        encoded_image (torch.Tensor): Encoded image tensor with shape [batch_size, channels, height, width].
+        image_shape (tuple): Shape of the image (height, width).
+        mask_value (int): Pixel value for the masked region.
+        random_seed (int): Random seed for reproducibility.
+        use_cuda (bool): Whether to use CUDA for tensor operations.
+        target_area_ratio (float): Ratio of the masked area to the image area.
+
+    Returns:
+        torch.Tensor: Image tensor after masking.
     """
     batch_size, channels, height, width = encoded_image.size()
-    vertices = generate_random_polygon(image_shape, random_seed=random_seed)
-    
-    
-    vertices = vertices * np.array([width / image_shape[1], height / image_shape[0]])
 
-    mask = np.zeros((height, width), dtype=np.uint8)
-    cv2.fillPoly(mask, [vertices.astype(np.int32)], 255)
+
+    mask = np.ones((height, width), dtype=np.uint8)
+
+
+    vertices = generate_random_polygon(image_shape, target_area_ratio=target_area_ratio, random_seed=random_seed)
+
+
+    cv2.fillPoly(mask, [vertices.astype(np.int32)], 0)
+
+
     mask = torch.tensor(mask, dtype=torch.float32)
     if use_cuda:
         mask = mask.unsqueeze(0).unsqueeze(0).expand(batch_size, 1, height, width).cuda()
     else:
         mask = mask.unsqueeze(0).unsqueeze(0).expand(batch_size, 1, height, width)
-    masked_image = encoded_image * mask
+
+
+    encoded_image = (encoded_image + 1) / 2
+
+
+    masked_image = encoded_image * mask + mask_value * (1 - mask)
     return masked_image
 
 
@@ -271,7 +288,7 @@ def transform_net(encoded_image, args, global_step, epoch):
 
     
     image_shape = (400, 400)
-    if epoch > 30:
+    if epoch > 10:
         if random.random() < 0.2:
             encoded_image = random_irregular_mask(encoded_image, image_shape)
             print('mask add')
