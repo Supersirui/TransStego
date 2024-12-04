@@ -11,7 +11,7 @@ exp_name: mask
 secret_size: 100
 num_epochs: 50
 num_steps: 50000
-batch_size: 4
+batch_size: 8
 lr: 0.00001
 l2_loss_scale: 2
 l2_loss_ramp: 15000
