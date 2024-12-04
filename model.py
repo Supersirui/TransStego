@@ -119,7 +119,7 @@ class Decoder(nn.Module):
             Conv2D(24, 24, 3, activation='relu'),
             Conv2D(24, 24, 3, activation='relu'),
             Conv2D(24, 1, 1, activation='relu'),
-            #nn.AdaptiveAvgPool2d(10),  
+            #nn.AdaptiveAvgPool2d(10),
             Flatten(),
             # nn.Dropout(p=0.5),
             Dense(160000, secret_size, activation=None)
@@ -165,13 +165,13 @@ def generate_random_polygon(image_shape, num_vertices_range=(5, 12), target_area
     np.random.seed(random_seed)
     height, width = image_shape
     total_area = height * width
-    target_area = total_area * target_area_ratio  # Target covered area
+    target_area = total_area * target_area_ratio
 
 
     min_vertices, max_vertices = num_vertices_range
     num_vertices = np.random.randint(min_vertices, max_vertices + 1)
 
-    # Randomly generate the center point
+
     center_x = np.random.randint(0, width)
     center_y = np.random.randint(0, height)
 
@@ -183,7 +183,7 @@ def generate_random_polygon(image_shape, num_vertices_range=(5, 12), target_area
 
     angles = np.sort(np.random.uniform(0, 2 * np.pi, num_vertices))
 
-    # Calculate vertex coordinates based on angles and radii
+
     vertices_x = (center_x + radii * np.cos(angles)).clip(0, width - 1).astype(int)
     vertices_y = (center_y + radii * np.sin(angles)).clip(0, height - 1).astype(int)
 
@@ -202,8 +202,8 @@ def random_irregular_mask(encoded_image, image_shape, mask_value=0, random_seed=
         target_area_ratio (float): Ratio of the masked area to the image area.
 
     Returns:
-        torch.Tensor: Image tensor after masking.
-    """
+        torch.Tensor: The image tensor after masking.
+"""
     batch_size, channels, height, width = encoded_image.size()
 
 
@@ -286,14 +286,14 @@ def transform_net(encoded_image, args, global_step, epoch):
         encoded_image = utils.jpeg_compress_decompress(encoded_image, rounding=utils.round_only_at_0,
                                                        quality=jpeg_quality)
 
-    
+
     image_shape = (400, 400)
     if epoch > 10:
         if random.random() < 0.2:
             encoded_image = random_irregular_mask(encoded_image, image_shape)
             print('mask add')
-    
-    
+
+
     return encoded_image
 
 
@@ -320,8 +320,8 @@ def psnr(img1, img2):
 
 
 
-def string_to_bits_tensor(input_str):   
-    byte_data = input_str.encode('utf-8') 
+def string_to_bits_tensor(input_str):
+    byte_data = input_str.encode('utf-8')
     bits_list = [int(bit) for byte in byte_data for bit in format(byte, '08b')]
     bits_tensor = torch.tensor(bits_list).view(1, -1)
     return bits_tensor
